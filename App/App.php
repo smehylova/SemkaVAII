@@ -41,7 +41,7 @@ class App
 
         $route = $this->router->processURL();
 
-        #$data = call_user_func([$route['controller'], $route['action']]);
+        $data = call_user_func([$route['controller'], $route['action']]);
 
         require "App" . DIRECTORY_SEPARATOR . "Views" . DIRECTORY_SEPARATOR . $route['controller']->getName() . DIRECTORY_SEPARATOR . $route['action'] . ".view.php";
 

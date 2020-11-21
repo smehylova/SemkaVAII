@@ -23,8 +23,8 @@
                 <td><?= $ziadost->getTelefon() ?></td>
                 <td><?= $ziadost->getEmail() ?></td>
                 <td><?= $ziadost->getPoziadavka() ?></td>
-                <td><a class="btn btn-outline-primary" href="?c=Ziadost&a=Add&id=<?= $ziadost->getId() ?>">Edit</a></td>
-                <td><a class="btn btn-outline-danger" href="?c=blog&a=delete&id=<?= $ziadost->getId() ?>">Zmazat</a></td>
+                <td><a class="btn btn-outline-primary" href="?c=Ziadost&a=edit&id=<?= $ziadost->getId() ?>">Edit</a></td>
+                <td><a class="btn btn-outline-danger" href="?c=Ziadost&a=delete&id=<?= $ziadost->getId() ?>">Zmazat</a></td>
             </tr>
 
         <?php } ?>

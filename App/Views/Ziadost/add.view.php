@@ -1,3 +1,8 @@
+<div class="container">
+    <h1>Pridanie noveho clanku</h1>
+</div>
+
+
 <?php /** @var \App\Models\Ziadost $data */ ?>
 <div class="container">
     <form method="post">

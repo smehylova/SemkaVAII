@@ -41,8 +41,8 @@ class ZiadostController extends AControllerBase
     {
         $val = null;
         if (isset($_POST['id'])) {
-            $val = $this->validate($_POST['meno'], $_POST['priezvisko'], $_POST['telefon'], $_POST['email'], $_POST['poziadavka']);
-
+            #$val = $this->validate($_POST['meno'], $_POST['priezvisko'], $_POST['telefon'], $_POST['email'], $_POST['poziadavka']);
+            $val = null;
             $novy = Ziadost::getOne($_POST['id']);
             $novy->setMeno($_POST['meno']);
             $novy->setPriezvisko($_POST['priezvisko']);
@@ -71,25 +71,6 @@ class ZiadostController extends AControllerBase
 
     public function validate($meno, $priezvisko, $telefon, $email, $poziadavka)
     {
-        $titleErrors = [];
-        if (strlen($title) < 3)
-        {
-            $titleErrors[] = "Nazov je moc kratky (min. 3 chars)";
-        }
-        if (is_numeric($title[0]))
-        {
-            $titleErrors[] = "Nazov nesmie zacinat cislom";
-        }
-
-        $textErrors = [];
-        if (strlen($text) < 20)
-        {
-            $textErrors[] = "Text je moc kratky (min. 20 chars)";
-        }
-
-        return count($titleErrors) > 0 || count($textErrors) > 0 ? [ 'title' => $titleErrors, 'text' => $textErrors] : null;
-
-
 
     }
 

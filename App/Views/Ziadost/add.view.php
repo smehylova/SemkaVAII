@@ -10,7 +10,7 @@
             <input type="hidden" value="<?= $data['model']->getId() ?>" name="id">
         <?php } ?>
 
-        <input placeholder="Meno" type="text" name="meno" value="<?= ( !empty($data['model']) ? $data['model']->getMeno() : "") ?>">
+        <input placeholder="Meno" type="text" name="meno" value="<?= ( !empty($data['model']) ? $data['model']->getMeno() : "") ?>" required>
         <br>
         <?php if (isset($data['err']['meno'])) {
             foreach ($data['err']['meno'] as $err) { ?>
@@ -18,7 +18,7 @@
             <?php } ?>
         <?php } ?>
 
-        <input placeholder="Priezvisko" type="text" name="priezvisko" value="<?= ( !empty($data['model']) ? $data['model']->getPriezvisko() : "") ?>">
+        <input placeholder="Priezvisko" type="text" name="priezvisko" value="<?= ( !empty($data['model']) ? $data['model']->getPriezvisko() : "") ?>" required>
         <br>
         <?php if (isset($data['err']['priezvisko'])) {
             foreach ($data['err']['priezvisko'] as $err) { ?>
@@ -42,10 +42,17 @@
             <?php } ?>
         <?php } ?>
 
-        <textarea placeholder="Miesto pre vasu poziadavku" name="poziadavka"><?= ( !empty($data['model']) ? $data['model']->getPoziadavka() : "") ?></textarea>
+        <textarea placeholder="Miesto pre vasu poziadavku" name="poziadavka" required><?= ( !empty($data['model']) ? $data['model']->getPoziadavka() : "") ?></textarea>
 
         <?php if (isset($data['err']['poziadavka'])) {
             foreach ($data['err']['poziadavka'] as $err) { ?>
+                <div><?= $err ?></div>
+            <?php } ?>
+        <?php } ?>
+        <br>
+
+        <?php if (isset($data['err']['errors'])) {
+            foreach ($data['err']['errors'] as $err) { ?>
                 <div><?= $err ?></div>
             <?php } ?>
         <?php } ?>

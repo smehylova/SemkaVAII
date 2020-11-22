@@ -11,6 +11,7 @@
             <input type="hidden" value="<?= $data['model']->getId() ?>" name="id">
         <?php } ?>
 
+        <h4>Meno: </h4>
         <input placeholder="Meno" type="text" name="meno" value="<?= ( !empty($data['model']) ? $data['model']->getMeno() : "") ?>" required>
         <br>
         <?php if (isset($data['err']['meno'])) {
@@ -19,6 +20,7 @@
             <?php } ?>
         <?php } ?>
 
+        <h4>Priezvisko: </h4>
         <input placeholder="Priezvisko" type="text" name="priezvisko" value="<?= ( !empty($data['model']) ? $data['model']->getPriezvisko() : "") ?>" required>
         <br>
         <?php if (isset($data['err']['priezvisko'])) {
@@ -27,7 +29,8 @@
             <?php } ?>
         <?php } ?>
 
-        <input placeholder="Telefonne cislo" type="text" name="telefon" value="<?= ( !empty($data['model']) ? $data['model']->getTelefon() : "") ?>">
+        <h4>Telefonne cislo: </h4>
+        <input placeholder="Telefon" type="text" name="telefon" value="<?= ( !empty($data['model']) ? $data['model']->getTelefon() : "") ?>">
         <br>
         <?php if (isset($data['err']['telefon'])) {
             foreach ($data['err']['telefon'] as $err) { ?>
@@ -35,7 +38,8 @@
             <?php } ?>
         <?php } ?>
 
-        <input placeholder="Emailova adresa" type="text" name="email" value="<?= ( !empty($data['model']) ? $data['model']->getEmail() : "") ?>">
+        <h4>Emailova adresa: </h4>
+        <input placeholder="Email" type="text" name="email" value="<?= ( !empty($data['model']) ? $data['model']->getEmail() : "") ?>">
         <br>
         <?php if (isset($data['err']['email'])) {
             foreach ($data['err']['email'] as $err) { ?>
@@ -43,6 +47,7 @@
             <?php } ?>
         <?php } ?>
 
+        <h4>Poziadavka: </h4>
         <textarea placeholder="Miesto pre vasu poziadavku" name="poziadavka" required><?= ( !empty($data['model']) ? $data['model']->getPoziadavka() : "") ?></textarea>
 
         <?php if (isset($data['err']['poziadavka'])) {
@@ -59,6 +64,7 @@
         <?php } ?>
         <br>
         <input type="submit" value="Odoslat">
+        <a href="?c=Ziadost" role="button">Zrusit editovanie</a>
 
 
     </form>

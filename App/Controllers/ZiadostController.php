@@ -119,7 +119,27 @@ class ZiadostController extends AControllerBase
         }
 
         $emailErrors = [];
-
+        if ($email != null)
+        {
+            $pom = false;
+            $bodka = false;
+            for ($i = 0; $i < strlen($email); $i++)
+            {
+                if ($email[$i] == "@") {
+                    $pom = true;
+                }
+                if ($pom == true)
+                {
+                    if ($email[$i] == ".")
+                    {
+                        $bodka = true;
+                    }
+                }
+            }
+            if ($bodka == false) {
+                $emailErrors[] = "Email musi mat tvar napriklad aa@gmail.com";
+            }
+        }
 
         $poziadavkaErrors = [];
 

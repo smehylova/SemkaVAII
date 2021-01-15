@@ -22,4 +22,9 @@ class HomeController extends AControllerBase
 
     }
 
+    public function prihlasenie()
+    {
+
+    }
+
 }

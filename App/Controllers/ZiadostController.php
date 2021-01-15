@@ -21,7 +21,7 @@ class ZiadostController extends AControllerBase
     {
         $val = null;
 
-        if (!isset($_POST['telefon']) || !isset($_POST['email'])) return null;
+        if (!isset($_POST['meno']) || !isset($_POST['priezvisko']) || !isset($_POST['poziadavka'])) return null;
 
         $novy = new Ziadost($_POST['meno'], $_POST['priezvisko'], $_POST['telefon'], $_POST['email'], $_POST['poziadavka']);
         $val = $this->validate($_POST['meno'], $_POST['priezvisko'], $_POST['telefon'], $_POST['email'], $_POST['poziadavka']);

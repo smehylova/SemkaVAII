@@ -12,28 +12,25 @@ class OtazkaController extends AControllerBase
 
     public function index()
     {
-        return Otazka::getAll();
+        return $this->html(Otazka::getAll(), 'index');
     }
 
     public function add()
     {
         $val = null;
 
-        if (!isset($_POST['otazka'])) return null;
+        if (!isset($_POST['otazka'])) return $this->html([], 'add');
 
         $novy = new Otazka($_POST['otazka'], $_POST['odpoved'], $_POST['pytajuci_id']);
         $val = $this->validate($_POST['otazka'], $_POST['odpoved']);
 
-        if ($val == null) {
+        if (sizeof($val['otazka']) == 0) {
             $novy->save();
 
             $this->redirectToIndex();
         }
 
-        return [
-            'model' => $novy,
-            'err' => $val,
-        ];
+        return $this->html(['model' => $novy, 'err' => $val], 'add');
     }
 
     public function delete()
@@ -55,7 +52,7 @@ class OtazkaController extends AControllerBase
             $novy->setOtazka($_POST['otazka']);
             $novy->setOdpoved($_POST['odpoved']);
 
-            if ($val == null) {
+            if (sizeof($val['otazka']) == 0) {
                 $novy->save();
 
                 $this->redirectToIndex();
@@ -64,20 +61,12 @@ class OtazkaController extends AControllerBase
             $novy = Otazka::getOne($_GET['id']);
         }
 
-
-
-        return [
-            'model' => $novy,
-            'err' => $val,
-        ];
-
-
+        return $this->html(['model' => $novy, 'err' => $val], 'edit');
     }
 
     public function validate($otazka, $odpoved)
     {
         $otazkaErrors = [];
-        $pom = false;
         if ($otazka[strlen($otazka) - 1] != '?') {
             $otazkaErrors[] = "Otazka musi obsahovat otazku s otaznikom. (?)";
         }
@@ -85,11 +74,7 @@ class OtazkaController extends AControllerBase
             $otazkaErrors[] = "Otazka musi obsahovat minimalne 10 znakov.";
         }
 
-        $odpovedErrors = [];
-
-
-        return count($otazkaErrors) > 0 || count($odpovedErrors) > 0 ? [ 'otazka' => $otazkaErrors, 'odpoved' => $odpovedErrors ]: null;
-
+        return (count($otazkaErrors) != []) ? [ 'otazka' => $otazkaErrors ] : null;
     }
 
     public function redirectToIndex()

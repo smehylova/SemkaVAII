@@ -9,24 +9,15 @@ namespace App\Config;
  */
 class Configuration
 {
+    public const APP_NAME = 'VAII Chat';
+
     public const DB_HOST = 'localhost';
     public const DB_NAME = 'semestralka';
     public const DB_USER = 'root';
     public const DB_PASS = 'dtb456';
 
-    public const LOGIN_URL = '/';
+    public const ROOT_LAYOUT = 'root.layout.view.php';
 
-    private static $instance = NULL;
+    public const DEBUG_QUERY = false;
 
-    /**
-     * Gets olny one instance
-     * @return Configuration|null
-     */
-    public static function getInstance()
-    {
-        if (!self::$instance) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Editacia otazky <b><?= $data['model']->getId() . " " . $data['model']->getOtazka(); ?></b></h1>
+    <h1>Editacia otazky</h1>
 </div>
 
 

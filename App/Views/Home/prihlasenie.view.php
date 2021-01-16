@@ -1,25 +1,22 @@
-<?php
-?>
-
-<?php
-
-?>
-
+<?php  ?>
 <div class="container informacie col-12">
-    <form>
+    <h1>Zadajte pouzivatelske meno a heslo pre prihlasenie</h1>
+    <form method="post">
         <div class="form-group">
             <label for="exampleInputEmail1">Pouzivatelske meno(login): </label>
-            <input  class="form-control" type="text">
+            <input  class="form-control" type="text" name="login">
+            <?php if (isset($data['err']['login'])) {?>
+                <div><?= $data['err']['login'] ?></div>
+            <?php } ?>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Heslo: </label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label>Heslo: </label>
+            <input type="password" class="form-control" name="heslo">
+            <?php if (isset($data['err']['heslo'])) {?>
+                <div><?= $data['err']['heslo'] ?></div>
+            <?php } ?>
         </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Prihlasit</button>
     </form>
 </div>
 

@@ -13,18 +13,20 @@ class Pouzivatel extends Model
     protected $heslo;
     protected $email;
     protected $telefon;
+    protected $jeSpravca;
 
-    public function __construct($login = "", $heslo = "", $email = "", $telefon = "")
+    public function __construct($login = "", $heslo = "", $email = "", $telefon = "", $jeSpravca = "")
     {
         $this->login = $login;
         $this->heslo = $heslo;
         $this->email = $email;
         $this->telefon = $telefon;
+        $this->jeSpravca = $jeSpravca;
     }
 
     static public function setDbColumns()
     {
-        return ['id', 'login', 'heslo', 'email', 'telefon'];
+        return ['id', 'login', 'heslo', 'email', 'telefon', 'jeSpravca'];
     }
 
     static public function setTableName()
@@ -102,5 +104,21 @@ class Pouzivatel extends Model
     public function setTelefon($telefon): void
     {
         $this->telefon = $telefon;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getJeSpravca()
+    {
+        return $this->jeSpravca;
+    }
+
+    /**
+     * @param mixed|string $jeSpravca
+     */
+    public function setJeSpravca($jeSpravca): void
+    {
+        $this->jeSpravca = $jeSpravca;
     }
 }

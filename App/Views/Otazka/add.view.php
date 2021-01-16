@@ -21,25 +21,13 @@
         <?php } ?>
 
         <h4>Odpoved: </h4>
-        <input class="form-control" placeholder="Odpoved" type="text" name="odpoved" value="<?= ( !empty($data['model']) ? $data['model']->getOdpoved() : "") ?>" required>
+        <input class="form-control" placeholder="Odpoved" type="text" name="odpoved" value="<?= ( !empty($data['model']) ? $data['model']->getOdpoved() : "") ?>">
         <br>
-        <?php if (isset($data['err']['odpoved'])) {
-            foreach ($data['err']['odpoved'] as $err) { ?>
-                <div><?= $err ?></div>
-            <?php } ?>
-        <?php } ?>
 
         <h4>Pytajuceho id: </h4>
         <input class="form-control" placeholder="Pytajuci_id" type="text" name="pytajuci_id" value="<?= ( !empty($data['model']) ? $data['model']->getPytajuciId() : "") ?>">
         <br>
-        <?php if (isset($data['err']['pytajuci_id'])) {
-            foreach ($data['err']['pytajuci_id'] as $err) { ?>
-                <div><?= $err ?></div>
-            <?php } ?>
-        <?php } ?>
-        <br>
         <input type="submit" value="Odoslat">
-        <a href="?c=Otazka" role="button">Zrusit editovanie</a>
 
 
     </form>

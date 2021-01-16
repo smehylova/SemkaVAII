@@ -19,7 +19,7 @@ class OtazkaController extends AControllerBase
     {
         $val = null;
 
-        if (!isset($_POST['otazka']) || !isset($_POST['odpoved']) || !isset($_POST['pytajuci_id'])) return null;
+        if (!isset($_POST['otazka'])) return null;
 
         $novy = new Otazka($_POST['otazka'], $_POST['odpoved'], $_POST['pytajuci_id']);
         $val = $this->validate($_POST['otazka'], $_POST['odpoved']);

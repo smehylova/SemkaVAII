@@ -68,5 +68,20 @@ h1 {
     text-align: center;
 }
 
+.card {
+    height: 300px;
+    background: powderblue;
+}
+
+.btnEdit {
+    bottom: 60px;
+    position: absolute;
+}
+
+.btnZmaz {
+    bottom: 10px;
+    position: absolute;
+}
+
 
 

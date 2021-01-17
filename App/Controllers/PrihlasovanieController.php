@@ -25,7 +25,7 @@ class PrihlasovanieController extends AControllerBase
                 } else {
                     $errors = "Nespravne zadane heslo!";
                     $validacia = $errors != [] ? [ 'heslo' => $errors ]: null;
-                    return $this->html(['err' => $validacia,], );
+                    return $this->html(['err' => $validacia,], 'index');
                 }
             }
         }
@@ -35,7 +35,7 @@ class PrihlasovanieController extends AControllerBase
 
         $validacia = $errors != [] ? [ 'login' => $errors ]: null;
 
-        return $this->html(['err' => $validacia,], );
+        return $this->html(['err' => $validacia,], 'index');
     }
 
     public function registracia()
@@ -58,7 +58,7 @@ class PrihlasovanieController extends AControllerBase
 
     public function redirectToIndex($ciel)
     {
-        header("Location: http://localhost/VAIISem2Checkpoint?c=$ciel");
+        header("Location: http://localhost/VAIISemka?c=$ciel");
         die();
     }
 }

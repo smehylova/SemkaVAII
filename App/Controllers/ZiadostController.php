@@ -146,7 +146,7 @@ class ZiadostController extends AControllerBase
 
     public function redirectToIndex()
     {
-        header("Location: http://localhost/VAIISem2Checkpoint?c=Ziadost");
+        header("Location: http://localhost/VAIISemka?c=Ziadost");
         die();
     }
 }

@@ -79,7 +79,7 @@ class OtazkaController extends AControllerBase
 
     public function redirectToIndex()
     {
-        header("Location: http://localhost/VAIISem2Checkpoint?c=Otazka");
+        header("Location: http://localhost/VAIISemka?c=Otazka");
         die();
     }
 }

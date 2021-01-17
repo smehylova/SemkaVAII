@@ -9,24 +9,28 @@ use App\Core\Model;
 class Pouzivatel extends Model
 {
     protected $id;
+    protected $meno;
+    protected $priezvisko;
     protected $login;
     protected $heslo;
     protected $email;
     protected $telefon;
     protected $jeSpravca;
 
-    public function __construct($login = "", $heslo = "", $email = "", $telefon = "", $jeSpravca = "")
+    public function __construct($meno = "", $priezvisko = "", $login = "", $heslo = "", $email = "", $telefon = "")
     {
+        $this->meno = $meno;
+        $this->priezvisko = $priezvisko;
         $this->login = $login;
         $this->heslo = $heslo;
         $this->email = $email;
         $this->telefon = $telefon;
-        $this->jeSpravca = $jeSpravca;
+        $this->jeSpravca = 0;
     }
 
     static public function setDbColumns()
     {
-        return ['id', 'login', 'heslo', 'email', 'telefon', 'jeSpravca'];
+        return ['id', 'meno', 'priezvisko', 'login', 'heslo', 'email', 'telefon', 'jeSpravca'];
     }
 
     static public function setTableName()
@@ -120,5 +124,37 @@ class Pouzivatel extends Model
     public function setJeSpravca($jeSpravca): void
     {
         $this->jeSpravca = $jeSpravca;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMeno()
+    {
+        return $this->meno;
+    }
+
+    /**
+     * @param mixed $meno
+     */
+    public function setMeno($meno): void
+    {
+        $this->meno = $meno;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPriezvisko()
+    {
+        return $this->priezvisko;
+    }
+
+    /**
+     * @param mixed $priezvisko
+     */
+    public function setPriezvisko($priezvisko): void
+    {
+        $this->priezvisko = $priezvisko;
     }
 }

@@ -29,7 +29,10 @@
                         <a class="nav-link" href="?c=Otazka">Otazky a odpovede</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="?c=Home&a=prihlasenie">Prihlasit sa</a>
+                        <a class="nav-link" href="?c=Ziadost">Ziadosti o kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="?c=Prihlasovanie">Prihlasit sa</a>
                     </li>
                 </ul>
 

@@ -14,14 +14,14 @@ class ZiadostController extends AControllerBase
 
     public function index()
     {
-        return Ziadost::getAll();
+        return $this->html([Ziadost::getAll()], 'index');
     }
 
     public function add()
     {
         $val = null;
 
-        if (!isset($_POST['meno']) || !isset($_POST['priezvisko']) || !isset($_POST['poziadavka'])) return null;
+        if (!isset($_POST['meno']) || !isset($_POST['priezvisko']) || !isset($_POST['poziadavka'])) return $this->html([], 'add');;
 
         $novy = new Ziadost($_POST['meno'], $_POST['priezvisko'], $_POST['telefon'], $_POST['email'], $_POST['poziadavka']);
         $val = $this->validate($_POST['meno'], $_POST['priezvisko'], $_POST['telefon'], $_POST['email'], $_POST['poziadavka']);
@@ -32,10 +32,7 @@ class ZiadostController extends AControllerBase
             $this->redirectToIndex();
         }
 
-        return [
-            'model' => $novy,
-            'err' => $val,
-        ];
+        return $this->html(['model' => $novy, 'err' => $val], 'add');
     }
 
     public function delete()
@@ -69,14 +66,7 @@ class ZiadostController extends AControllerBase
             $novy = Ziadost::getOne($_GET['id']);
         }
 
-
-
-        return [
-            'model' => $novy,
-            'err' => $val,
-        ];
-
-
+        return $this->html(['model' => $novy, 'err' => $val], 'edit');
     }
 
     public function validate($meno, $priezvisko, $telefon, $email, $poziadavka)

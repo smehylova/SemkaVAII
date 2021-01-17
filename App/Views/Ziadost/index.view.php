@@ -15,7 +15,8 @@
         </tr>
         </thead>
         <tbody>
-        <?php /** @var App\Models\Ziadost[] $data */
+        <?php ///** @var App\Models\Ziadost[] $data */
+        $data = App\Models\Ziadost::getAll(); //dorobit na povodne
         foreach ($data as $ziadost) { ?>
             <tr>
                 <td><?= $ziadost->getMeno() ?></td>

@@ -19,7 +19,9 @@ class PrihlasovanieController extends AControllerBase
         $data = Pouzivatel::getAll();
         foreach ($data as $pouzivatel) {
             if ($pouzivatel->getLogin() == $_POST['login']) {
-                if ($pouzivatel->getHeslo() == $_POST['heslo']) {
+                $heslo = password_hash($_POST['heslo'], PASSWORD_DEFAULT);
+                if (password_verify($pouzivatel->getHeslo(), $heslo)) {
+                    $this->app->getKontrola()->prihlasit($pouzivatel);
                     $this->redirectToIndex("Home");
                     return $this->html();
                 } else {

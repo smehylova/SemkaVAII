@@ -1,5 +1,6 @@
 <?php
     /** @var string $contentHTML */
+/** @var \App\Config\Kontrola $kontrola */
 ?>
 
 <html>
@@ -32,9 +33,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?c=Otazka">Otazky a odpovede</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?c=Ziadost">Ziadosti o kontakt</a>
-                    </li>
+                    <?php if ($kontrola->jePrihlaseny()) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?c=Ziadost">Ziadosti o kontakt</a>
+                        </li>
+                    <?php } ?>
+
                     <li class="nav-item">
                         <a class="nav-link" href="?c=Prihlasovanie">Prihlasit sa</a>
                     </li>

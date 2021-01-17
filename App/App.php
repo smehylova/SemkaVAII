@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Config\Configuration;
-use App\Core\AAuthenticator;
+use App\Config\Kontrola;
 use App\Core\DB\Connection;
 use App\Core\Request;
 use App\Core\Router;
@@ -24,6 +24,8 @@ class App
      * @var Request
      */
     private Request $request;
+
+    private ?Kontrola $kontrola;
 
     /**
      * App constructor
@@ -78,5 +80,13 @@ class App
     public function getRequest(): Request
     {
         return $this->request;
+    }
+
+    /**
+     * @return Kontrola
+     */
+    public function getKontrola(): Kontrola
+    {
+        return $this->kontrola;
     }
 }

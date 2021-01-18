@@ -1,6 +1,6 @@
 class Ziadosti {
 
-    constructor(hodnota, idPo) {
+    constructor() {
         this.nacitat();
 
         setInterval(() => {
@@ -12,7 +12,6 @@ class Ziadosti {
         try {
             let response = await fetch("?c=Ziadost&a=ziadosti");
             let data = await response.json();
-            console.log(data);
 
             var list = document.getElementById("tabulkaZiadosti");
             var html = "";

@@ -14,8 +14,7 @@ class ZiadostController extends AControllerBase
         if ($this->app->getAuth()->jePrihlaseny() && $this->app->getAuth()->getPouzivatel()->getJeSpravca()) {
             return $this->html([Ziadost::getAll()], 'index');
         }
-        header("Location: http://localhost/SemkaVAII?c=Prihlasovanie");
-        die();
+        this.$this->redirectToIndex("Prihlasovanie");
     }
 
     public function add()
@@ -30,7 +29,7 @@ class ZiadostController extends AControllerBase
         if ($val == null) {
             $novy->save();
 
-            $this->redirectToIndex();
+            $this->redirectToIndex("Ziadost");
         }
 
         return $this->html(['model' => $novy, 'err' => $val], 'add');
@@ -43,7 +42,7 @@ class ZiadostController extends AControllerBase
             $novy->delete();
         }
 
-        $this->redirectToIndex();
+        $this->redirectToIndex("Ziadost");
     }
 
     public function edit()
@@ -61,7 +60,7 @@ class ZiadostController extends AControllerBase
             if ($val == null) {
                 $novy->save();
 
-                $this->redirectToIndex();
+                $this->redirectToIndex("Ziadost");
             }
         } else {
             $novy = Ziadost::getOne($_GET['id']);
@@ -150,9 +149,9 @@ class ZiadostController extends AControllerBase
         return $this->json(Ziadost::getAll());
     }
 
-    public function redirectToIndex()
+    public function redirectToIndex($ciel)
     {
-        header("Location: http://localhost/SemkaVAII?c=Ziadost");
+        header("Location: http://localhost/SemkaVAII?c=$ciel");
         die();
     }
 }

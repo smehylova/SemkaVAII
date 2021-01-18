@@ -25,7 +25,24 @@ class HomeController extends AControllerBase
 
     public function udaje()
     {
-        return $this->html([], 'udaje');
+        if ($this->app->getAuth()->jePrihlaseny()) {
+            return $this->html([], 'udaje');
+        }
+        this.$this->redirectToIndex("Prihlasovanie");
+    }
+
+    public function pouzivatelia()
+    {
+        if ($this->app->getAuth()->jePrihlaseny()) {
+            return $this->html([], 'pouzivatelia');
+        }
+        this.$this->redirectToIndex("Prihlasovanie");
+    }
+
+    public function redirectToIndex($ciel)
+    {
+        header("Location: http://localhost/SemkaVAII?c=$ciel");
+        die();
     }
 
 }

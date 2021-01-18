@@ -7,25 +7,23 @@ body {
 .uvodnyobrazok {
     background-image: url("https://copyservis.sk/wp-content/uploads/2016/09/SLIDERNOVZ-1030x228.jpg");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: top;
     position: absolute;
-    top: 60px;
     right: 0;
     left: 0;
     width: 100%;
-    height: 200px;
+    height: 150px;
 }
 
 .logo {
     background-color: powderblue;
     position: absolute;
     height: auto;
+    top: 50px;
     width: auto;
     text-align: center;
     font-size: 20px;
     left: 50%;
-    top: 100px;
     transform: translate(-50%);
 
     border: 5px solid blue;
@@ -40,9 +38,9 @@ body {
 }
 
 .otazky {
+    top: 160px;
     font-weight: bold;
-    position: absolute;
-    top: 300px;
+    position: relative;
     width: 580px;
 }
 
@@ -84,6 +82,14 @@ h1 {
 
 .zarovnanie {
     text-align: right;
+}
+
+.dropdown-item {
+    color: darkgray;
+}
+
+.nav-link {
+    color: darkgray;
 }
 
 

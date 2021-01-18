@@ -19,6 +19,21 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <?php if ($auth->jePrihlaseny()) { ?>
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vitaj <?= $auth->getPouzivatel()->getMeno() ?> <?= $auth->getPouzivatel()->getPriezvisko() ?>
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="?c=Otazka">Forum</a>
+                        <?php if ($auth->jeSpravca()) { ?>
+                            <a class="dropdown-item" href="?c=Ziadost">Ziadosti o kontakt</a>
+                        <?php } ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="?c=Prihlasovanie&a=odhlasit">Odhlasit</a>
+                    </div>
+                </div>
+            <?php } ?>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
@@ -30,27 +45,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="?c=Home&a=kontakt">Kontakt</a>
                     </li>
-                    <?php if ($auth->jePrihlaseny()) { ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="?c=Otazka">Forum</a>
-                        </li>
-                    <?php } ?>
-                    <?php if ($auth->jeSpravca()) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?c=Ziadost">Ziadosti o kontakt</a>
-                    </li>
+                    <?php if (!$auth->jePrihlaseny()) { ?>
+                        <form class="nav-item">
+                            <a class="nav-link" href="?c=Prihlasovanie">Prihlasit sa</a>
+                        </form>
                     <?php } ?>
                 </ul>
-                    <?php if ($auth->jePrihlaseny()) { ?>
-                        <form class="form-inline mt-2 mt-md-0">
-                            <a class="btn btn-secondary btn-bg" href="?c=Prihlasovanie&a=odhlasit">Odhlasit</a>
-                        </form>
-                    <?php } ?>
-                    <?php if (!$auth->jePrihlaseny()) { ?>
-                        <form class="form-inline mt-2 mt-md-0">
-                            <a class="btn btn-secondary btn-bg" href="?c=Prihlasovanie">Prihlasit sa</a>
-                        </form>
-                    <?php } ?>
 
             </div>
         </nav>

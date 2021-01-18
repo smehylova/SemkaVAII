@@ -66,7 +66,7 @@ class App
             // return view to user
             $response->generate();
         } else {
-            if ($this->auth->isLogged() or !defined('\\App\\Config\\Configuration::LOGIN_URL')) {
+            if ($this->auth->jePrihlaseny() or !defined('\\App\\Config\\Configuration::LOGIN_URL')) {
                 http_response_code(403);
                 echo '<h1>403 Forbidden</h1>';
             } else {

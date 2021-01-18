@@ -8,6 +8,7 @@
     <br>
     <form action="">
         <select name="filterOtazok" onchange="new Otazky(this.value, <?= $auth->getPouzivatel()->getId() ?>)">
+            <option value="">Vyber filter: </option>
             <option value="vsetky">Vsetky otazky</option>
             <option value="moje">Moje otazky</option>
             <option value="zodpovedane">Zodpovedane otazky</option>

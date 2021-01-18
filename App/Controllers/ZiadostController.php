@@ -9,14 +9,13 @@ use App\Models\Ziadost;
 
 class ZiadostController extends AControllerBase
 {
-    public function authorize($action)
-    {
-        return $this->app->getAuth()->jePrihlaseny() && $this->app->getAuth()->getPouzivatel()->getJeSpravca();
-    }
-
     public function index()
     {
-        return $this->html([Ziadost::getAll()], 'index');
+        if ($this->app->getAuth()->jePrihlaseny() && $this->app->getAuth()->getPouzivatel()->getJeSpravca()) {
+            return $this->html([Ziadost::getAll()], 'index');
+        }
+        header("Location: http://localhost/SemkaVAII?c=Prihlasovanie");
+        die();
     }
 
     public function add()

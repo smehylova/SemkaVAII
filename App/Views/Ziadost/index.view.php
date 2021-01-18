@@ -1,7 +1,8 @@
-<div class="container">
-    <h1>Ziadosti o kontakt</h1>
+<div class="">
+    <div class="nadpis">Ziadosti o kontakt</div>
 
-    <div class="container bd-example">
+    <pre>
+        <div class="tabulka bd-example">
         <table class="table table-striped table-dark">
             <thead>
             <tr>
@@ -18,6 +19,8 @@
             </tbody>
         </table>
     </div>
+    </pre>
+
 
 
 

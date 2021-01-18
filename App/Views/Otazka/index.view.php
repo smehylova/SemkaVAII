@@ -2,7 +2,7 @@
 /** @var \App\Core\AKontrola $auth */
 ?>
 <div class="container">
-    <h1>Otazky a odpovede</h1>
+    <div class="nadpis">Otazky a odpovede</div>
     <a href="?c=Otazka&a=Add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Pridat otazku</a>
     <br>
     <br>

@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="uvodnyobrazok">
-            <div class="logo col-12">
-                <h1>COPY SERVIS</h1>
+            <div class="logo nadpis col-12">
+                COPY SERVIS
             </div>
         </div>
     </div>

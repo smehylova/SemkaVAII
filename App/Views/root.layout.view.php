@@ -25,6 +25,7 @@
                         Vitaj <?= $auth->getPouzivatel()->getMeno() ?> <?= $auth->getPouzivatel()->getPriezvisko() ?>
                     </a>
                     <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="?c=Home&a=udaje">Osobne udaje</a>
                         <a class="dropdown-item" href="?c=Otazka">Forum</a>
                         <?php if ($auth->jeSpravca()) { ?>
                             <a class="dropdown-item" href="?c=Ziadost">Ziadosti o kontakt</a>

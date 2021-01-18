@@ -23,4 +23,9 @@ class HomeController extends AControllerBase
         return $this->html([], 'onas');
     }
 
+    public function udaje()
+    {
+        return $this->html([], 'udaje');
+    }
+
 }

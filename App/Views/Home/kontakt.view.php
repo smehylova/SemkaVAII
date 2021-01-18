@@ -1,11 +1,12 @@
 <div class="container informacie col-12">
     <div class="row">
         <div class="col-12">
-            <h1>
+            <div class="nadpis">
                 Pred návštevou našej prevádzky nás prosím telefonicky kontaktujte!
-            </h1>
+            </div>
         </div>
     </div>
+    <hr class="delic">
     <div class="row">
         <div class="col-sm-6">
             <b>KONTAKTNÉ ÚDAJE</b><br>

@@ -25,7 +25,7 @@ class OtazkaController extends AControllerBase
 
         if (!isset($_POST['otazka'])) return $this->html([], 'add');
 
-        $novy = new Otazka($_POST['otazka'], $_POST['odpoved'], $this->app->getAuth()->getLoggedUser()->getId());
+        $novy = new Otazka($_POST['otazka'], $_POST['odpoved'], $this->app->getAuth()->getPouzivatel()->getId());
         $val = $this->validate($_POST['otazka'], $_POST['odpoved']);
 
         if (sizeof($val['otazka']) == 0) {
@@ -79,6 +79,12 @@ class OtazkaController extends AControllerBase
         }
 
         return (count($otazkaErrors) != []) ? [ 'otazka' => $otazkaErrors ] : null;
+    }
+
+    public function otazky()
+    {
+        $otazky = Otazka::getAll();
+        return $this->json($otazky);
     }
 
     public function redirectToIndex()

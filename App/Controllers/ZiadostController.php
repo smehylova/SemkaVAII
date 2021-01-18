@@ -11,7 +11,7 @@ class ZiadostController extends AControllerBase
 {
     public function authorize($action)
     {
-        return $this->app->getAuth()->isLogged() && $this->app->getAuth()->getLoggedUser()->getJeSpravca();
+        return $this->app->getAuth()->jePrihlaseny() && $this->app->getAuth()->getPouzivatel()->getJeSpravca();
     }
 
     public function index()
@@ -144,6 +144,11 @@ class ZiadostController extends AControllerBase
 
         return count($menoErrors) > 0 || count($priezviskoErrors) > 0 || count($telefonErrors) > 0 || count($emailErrors) > 0 || count($poziadavkaErrors) > 0 || count($errors) > 0 ? [ 'meno' => $menoErrors, 'priezvisko' => $priezviskoErrors, 'telefon' => $telefonErrors, 'email' => $emailErrors, 'poziadavka' => $poziadavkaErrors, 'errors' => $errors ]: null;
 
+    }
+
+    public function ziadosti()
+    {
+        return $this->json(Ziadost::getAll());
     }
 
     public function redirectToIndex()

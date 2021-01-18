@@ -20,7 +20,7 @@ class PrihlasovanieController extends AControllerBase
         foreach ($data as $pouzivatel) {
             if ($pouzivatel->getLogin() == $_POST['login']) {
                 if (password_verify($_POST['heslo'], $pouzivatel->getHeslo())) {
-                    $this->app->getAuth()->login($_POST['login'], $_POST['heslo']);
+                    $this->app->getAuth()->prihlasit($pouzivatel);
                     $this->redirectToIndex("Home");
                     return $this->html();
                 } else {

@@ -1,36 +1,23 @@
 <div class="container">
     <h1>Ziadosti o kontakt</h1>
 
-    <table>
-        <thead>
-        <tr>
-            <th style="width: 100px">Meno</th>
-            <th style="width: 100px">Priezvisko</th>
-            <th style="width: 100px">Telefon</th>
-            <th style="width: 100px">Email</th>
-            <th style="width: 100px">Poziadavka</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php ///** @var App\Models\Ziadost[] $data */
-        $data = App\Models\Ziadost::getAll(); //dorobit na povodne
-        foreach ($data as $ziadost) { ?>
+    <div class="container bd-example">
+        <table class="table table-striped table-dark">
+            <thead>
             <tr>
-                <td><?= $ziadost->getMeno() ?></td>
-                <td><?= $ziadost->getPriezvisko() ?></td>
-                <td><?= $ziadost->getTelefon() ?></td>
-                <td><?= $ziadost->getEmail() ?></td>
-                <td><?= $ziadost->getPoziadavka() ?></td>
-                <td><a class="btn btn-outline-danger" href="?c=Ziadost&a=delete&id=<?= $ziadost->getId() ?>">Zmazat</a></td>
+                <th scope="col">Meno</th>
+                <th scope="col">Priezvisko</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Email</th>
+                <th scope="col">Poziadavka</th>
+                <th scope="col"></th>
             </tr>
+            </thead>
+            <tbody id="tabulkaZiadosti">
 
-        <?php } ?>
-
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </div>
 
 
 

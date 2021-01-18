@@ -9,6 +9,10 @@ use App\Models\Otazka;
 
 class OtazkaController extends AControllerBase
 {
+    public function authorize($action)
+    {
+        return $this->app->getAuth()->jePrihlaseny();
+    }
 
     public function index()
     {
@@ -21,7 +25,7 @@ class OtazkaController extends AControllerBase
 
         if (!isset($_POST['otazka'])) return $this->html([], 'add');
 
-        $novy = new Otazka($_POST['otazka'], $_POST['odpoved'], $_POST['pytajuci_id']);
+        $novy = new Otazka($_POST['otazka'], $_POST['odpoved'], $this->app->getAuth()->getLoggedUser()->getId());
         $val = $this->validate($_POST['otazka'], $_POST['odpoved']);
 
         if (sizeof($val['otazka']) == 0) {
@@ -79,7 +83,7 @@ class OtazkaController extends AControllerBase
 
     public function redirectToIndex()
     {
-        header("Location: http://localhost/VAIISemka?c=Otazka");
+        header("Location: http://localhost/SemkaVAII?c=Otazka");
         die();
     }
 }

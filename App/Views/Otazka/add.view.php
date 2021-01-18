@@ -23,10 +23,6 @@
         <h4>Odpoved: </h4>
         <input class="form-control" placeholder="Odpoved" type="text" name="odpoved" value="<?= ( !empty($data['model']) ? $data['model']->getOdpoved() : "") ?>">
         <br>
-
-        <h4>Pytajuceho id: </h4>
-        <input class="form-control" placeholder="Pytajuci_id" type="text" name="pytajuci_id" value="<?= ( !empty($data['model']) ? $data['model']->getPytajuciId() : "") ?>">
-        <br>
         <input type="submit" value="Odoslat">
 
 

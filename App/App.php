@@ -3,9 +3,10 @@
 namespace App;
 
 use App\Config\Configuration;
-use App\Config\Kontrola;
+use App\Core\AKontrola;
 use App\Core\DB\Connection;
 use App\Core\Request;
+use App\Core\Responses\RedirectResponse;
 use App\Core\Router;
 
 /**
@@ -25,7 +26,7 @@ class App
      */
     private Request $request;
 
-    private ?Kontrola $kontrola;
+    private ?AKontrola $auth;
 
     /**
      * App constructor
@@ -34,6 +35,14 @@ class App
     {
         $this->router = new Router();
         $this->request = new Request();
+
+        // Check if there is an authenticator
+        if (defined('\\App\\Config\\Configuration::AUTH_CLASS')) {
+            $authClass = Configuration::AUTH_CLASS;
+            $this->auth = $authClass::getInstance();
+        } else {
+            $this->auth = null;
+        }
     }
 
     /**
@@ -51,10 +60,20 @@ class App
         $controllerName = $this->router->getFullControllerName();
         $controller = new $controllerName($this);
 
-        // call appropriate method of the controller class
-        $response = call_user_func([$controller, $this->router->getAction()]);
-        // return view to user
-        $response->generate();
+        if ($controller->authorize($this->router->getAction())) {
+            // call appropriate method of the controller class
+            $response = call_user_func([$controller, $this->router->getAction()]);
+            // return view to user
+            $response->generate();
+        } else {
+            if ($this->auth->isLogged() or !defined('\\App\\Config\\Configuration::LOGIN_URL')) {
+                http_response_code(403);
+                echo '<h1>403 Forbidden</h1>';
+            } else {
+                (new RedirectResponse(Configuration::LOGIN_URL))->generate();
+
+            }
+        }
 
         // if DEBUG for SQL is set, show SQL queries to DB
         if (Configuration::DEBUG_QUERY) {
@@ -83,10 +102,11 @@ class App
     }
 
     /**
-     * @return Kontrola
+     * @return AKontrola|null
      */
-    public function getKontrola(): Kontrola
+    public function getAuth(): ?AKontrola
     {
-        return $this->kontrola;
+        return $this->auth;
     }
+
 }

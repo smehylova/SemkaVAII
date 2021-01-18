@@ -91,6 +91,16 @@ abstract class AControllerBase
     }
 
     /**
+     * Authorize action
+     * @param string $action
+     * @return bool
+     */
+    public function authorize(string $action)
+    {
+        return true;
+    }
+
+    /**
      * Every controller should implement the method for index action at least
      * @return Response
      */

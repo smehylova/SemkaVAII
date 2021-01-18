@@ -27,6 +27,7 @@ class ViewResponse extends Response
     public function generate() {
 
         $data = $this->data;
+        $auth = $this->app->getAuth();
 
         require "App" . DIRECTORY_SEPARATOR . "Views" . DIRECTORY_SEPARATOR . $this->viewName . ".view.php";
 

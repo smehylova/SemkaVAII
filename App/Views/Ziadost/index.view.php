@@ -1,6 +1,5 @@
 <div class="container">
     <h1>Ziadosti o kontakt</h1>
-    <a href="?c=Ziadost&a=Add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Pridat ziadost</a>
 
     <table>
         <thead>
@@ -24,7 +23,6 @@
                 <td><?= $ziadost->getTelefon() ?></td>
                 <td><?= $ziadost->getEmail() ?></td>
                 <td><?= $ziadost->getPoziadavka() ?></td>
-                <td><a class="btn btn-outline-primary" href="?c=Ziadost&a=edit&id=<?= $ziadost->getId() ?>">Edit</a></td>
                 <td><a class="btn btn-outline-danger" href="?c=Ziadost&a=delete&id=<?= $ziadost->getId() ?>">Zmazat</a></td>
             </tr>
 

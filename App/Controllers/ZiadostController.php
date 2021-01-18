@@ -9,8 +9,10 @@ use App\Models\Ziadost;
 
 class ZiadostController extends AControllerBase
 {
-
-
+    public function authorize($action)
+    {
+        return $this->app->getAuth()->isLogged() && $this->app->getAuth()->getLoggedUser()->getJeSpravca();
+    }
 
     public function index()
     {
@@ -146,7 +148,7 @@ class ZiadostController extends AControllerBase
 
     public function redirectToIndex()
     {
-        header("Location: http://localhost/VAIISemka?c=Ziadost");
+        header("Location: http://localhost/SemkaVAII?c=Ziadost");
         die();
     }
 }

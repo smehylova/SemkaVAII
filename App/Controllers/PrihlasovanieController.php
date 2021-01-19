@@ -71,11 +71,8 @@ class PrihlasovanieController extends AControllerBase
         }
 
         $priezviskoErrors = [];
-        for ($i = 0; $i < strlen($priezvisko); $i++) {
-            if (preg_match('~[0-9]+~', $priezvisko)) {
-                $priezviskoErrors[] = "Priezvisko nesmie obsahovat cislice.";
-                break;
-            }
+        if (preg_match('~[0-9]+~', $priezvisko)) {
+            $priezviskoErrors[] = "Priezvisko nesmie obsahovat cislice.";
         }
 
         $loginErrors = [];

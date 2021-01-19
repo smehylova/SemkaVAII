@@ -48,7 +48,7 @@ class PrihlasovanieController extends AControllerBase
         $novy = new Pouzivatel($_POST['meno'], $_POST['priezvisko'], $_POST['login'], $heslo, $_POST['email'], $_POST['telefon']);
         $val = $this->validate($_POST['meno'], $_POST['priezvisko'], $_POST['login'], $_POST['heslo'], $_POST['hesloDva'], $_POST['telefon']);
 
-        if (sizeof($val) == null) {
+        if (sizeof($val) <= 0) {
             $novy->save();
 
             $this->redirectToIndex("Prihlasovanie");
@@ -66,36 +66,35 @@ class PrihlasovanieController extends AControllerBase
     public function validate($meno, $priezvisko, $login, $heslo1, $heslo2, $telefon)
     {
         $menoErrors = [];
-        for ($i = 0; $i < strlen($meno); $i++) {
-            if ($meno[$i] >= 0 && $meno[$i] <= 9) {
-                $menoErrors = "Meno nesmie obsahovat cislice.";
-            }
+        if (preg_match('~[0-9]+~', $meno)) {
+            $menoErrors[] = "Meno nesmie obsahovat cislice.";
         }
 
         $priezviskoErrors = [];
         for ($i = 0; $i < strlen($priezvisko); $i++) {
-            if ($priezvisko[$i] >= 0 && $priezvisko[$i] <= 9) {
-                $priezviskoErrors = "Meno nesmie obsahovat cislice.";
+            if (preg_match('~[0-9]+~', $priezvisko)) {
+                $priezviskoErrors[] = "Priezvisko nesmie obsahovat cislice.";
+                break;
             }
         }
 
         $loginErrors = [];
         $loginy = Pouzivatel::getAll("login = ?", [$login]);
         if (count($loginy) > 0) {
-            $loginErrors = "Pouzivatelske meno uz existuje.";
+            $loginErrors[] = "Pouzivatelske meno uz existuje.";
         }
 
         $hesloErrors = [];
         if ($heslo1 != $heslo2) {
-            $hesloErrors = "Nezadali ste rovnake heslo";
+            $hesloErrors[] = "Nezadali ste rovnake heslo";
         }
 
         $telefonErrors = [];
         if (strlen($telefon) != 10) {
-            $telefonErrors = "Cislo musi obsahovat 10 cislic";
+            $telefonErrors[] = "Cislo musi obsahovat 10 cislic";
         }
 
-        return ($menoErrors != [] && $priezviskoErrors != [] && $loginErrors != [] && $hesloErrors != [] && $telefonErrors != []) ? [ 'meno' => $menoErrors, 'priezvisko' => $priezviskoErrors, 'login' => $loginErrors, 'heslo' => $hesloErrors, 'telefon' => $telefonErrors ] : null;
+        return ($menoErrors != [] || $priezviskoErrors != [] || $loginErrors != [] || $hesloErrors != [] || $telefonErrors != []) ? [ 'meno' => $menoErrors, 'priezvisko' => $priezviskoErrors, 'login' => $loginErrors, 'heslo' => $hesloErrors, 'telefon' => $telefonErrors ] : null;
     }
 
     public function redirectToIndex($ciel)

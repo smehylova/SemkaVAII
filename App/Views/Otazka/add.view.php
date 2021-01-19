@@ -14,12 +14,13 @@
         <h4>Otazka: </h4>
         <input class="form-control" placeholder="Otazka" type="text" name="otazka" value="<?= ( !empty($data['model']) ? $data['model']->getOtazka() : "") ?>" required>
         <br>
-        <?php if (isset($data['err']['otazka'])) {
+        <div class="chyba">
+            <?php if (isset($data['err']['otazka'])) {
             foreach ($data['err']['otazka'] as $err) { ?>
                 <div><?= $err ?></div>
             <?php } ?>
         <?php } ?>
-
+        </div>
         <h4>Odpoved: </h4>
         <input class="form-control" placeholder="Odpoved" type="text" name="odpoved" value="<?= ( !empty($data['model']) ? $data['model']->getOdpoved() : "") ?>">
         <br>

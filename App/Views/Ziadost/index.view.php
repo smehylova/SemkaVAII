@@ -1,9 +1,8 @@
 <div class="">
     <div class="nadpis">Ziadosti o kontakt</div>
 
-    <pre>
-        <div class="tabulka bd-example">
-        <table class="table table-striped table-dark">
+<!--chcela som tabulku zvalidovat takymto sposobom :( :(    <pre>-->
+        <table class="tabulka bd-example table table-striped table-dark">
             <thead>
             <tr>
                 <th scope="col">Meno</th>
@@ -18,8 +17,7 @@
 
             </tbody>
         </table>
-    </div>
-    </pre>
+<!--    </pre>-->
 
 
 

@@ -6,7 +6,7 @@
     <a href="?c=Otazka&a=Add" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Pridat otazku</a>
     <br>
     <br>
-    <form action="">
+    <form>
         <select name="filterOtazok" onchange="new Otazky(this.value, <?= $auth->getPouzivatel()->getId() ?>)">
             <option value="">Vyber filter: </option>
             <option value="vsetky">Vsetky otazky</option>

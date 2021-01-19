@@ -3,9 +3,8 @@
 
 <div class="nadpis">Zoznam registrovanych pouzivatelov</div>
 
-<pre>
-    <div class="tabulka">
-    <table class="table table-dark">
+<!--chcela som tabulku zvalidovat takymto sposobom :( :( <pre>-->
+    <table class="tabulka table table-dark">
         <thead>
         <tr>
             <th scope="col"></th>
@@ -34,5 +33,4 @@
 
         </tbody>
     </table>
-</div>
-</pre>
+<!--</pre>-->

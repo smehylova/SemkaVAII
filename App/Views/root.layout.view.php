@@ -2,7 +2,7 @@
     /** @var string $contentHTML */
 /** @var \App\Core\AKontrola $auth */
 ?>
-
+<!DOCTYPE html>
 <html>
 <head>
     <title>COPY SERVIS</title>
@@ -48,9 +48,9 @@
                         <a class="nav-link" href="?c=Home&a=kontakt">Kontakt</a>
                     </li>
                     <?php if (!$auth->jePrihlaseny()) { ?>
-                        <form class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="?c=Prihlasovanie">Prihlasit sa</a>
-                        </form>
+                        </li>
                     <?php } ?>
                 </ul>
 

@@ -29,8 +29,8 @@
                         <a class="dropdown-item" href="?c=Otazka">Forum</a>
                         <?php if ($auth->jeSpravca()) { ?>
                             <a class="dropdown-item" href="?c=Ziadost">Ziadosti o kontakt</a>
+                            <a class="dropdown-item" href="?c=Home&a=pouzivatelia">Registrovani</a>
                         <?php } ?>
-                        <a class="dropdown-item" href="?c=Home&a=pouzivatelia">Registrovani</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="?c=Prihlasovanie&a=odhlasit">Odhlasit</a>
                     </div>

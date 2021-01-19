@@ -14,7 +14,7 @@ class ZiadostController extends AControllerBase
         if ($this->app->getAuth()->jePrihlaseny() && $this->app->getAuth()->getPouzivatel()->getJeSpravca()) {
             return $this->html([Ziadost::getAll()], 'index');
         }
-        this.$this->redirectToIndex("Prihlasovanie");
+        $this->redirectToIndex("Prihlasovanie");
     }
 
     public function add()

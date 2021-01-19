@@ -28,15 +28,15 @@ class HomeController extends AControllerBase
         if ($this->app->getAuth()->jePrihlaseny()) {
             return $this->html([], 'udaje');
         }
-        this.$this->redirectToIndex("Prihlasovanie");
+        $this->redirectToIndex("Prihlasovanie");
     }
 
     public function pouzivatelia()
     {
-        if ($this->app->getAuth()->jePrihlaseny()) {
+        if ($this->app->getAuth()->jePrihlaseny() && $this->app->getAuth()->jeSpravca()) {
             return $this->html([], 'pouzivatelia');
         }
-        this.$this->redirectToIndex("Prihlasovanie");
+        $this->redirectToIndex("Prihlasovanie");
     }
 
     public function redirectToIndex($ciel)
